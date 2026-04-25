@@ -1,0 +1,77 @@
+{
+  "manifest_version": 3,
+  "name": "Stream Downloader",
+  "version": "1.0.0",
+  "description": "Download M3U8 (HLS) and MPD (DASH) video streams",
+  "permissions": [
+    "webRequest",
+    "declarativeNetRequest",
+    "downloads",
+    "storage",
+    "notifications",
+    "tabs",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_title": "Stream Downloader"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "rules": [
+    {
+      "id": "media_content_types",
+      "priority": 1,
+      "action": {
+        "type": "allow"
+      },
+      "condition": {
+        "resource_types": ["media"],
+        "mime_types": [
+          "application/x-mpegurl",
+          "application/vnd.apple.mpegurl",
+          "application/dash+xml",
+          "video/mp2t",
+          "video/mp4",
+          "audio/mp4",
+          "application/mp4",
+          "video/x-m4v",
+          "audio/x-m4a",
+          "video/3gpp",
+          "video/3gpp2",
+          "audio/3gpp",
+          "audio/3gpp2",
+          "video/quicktime",
+          "video/x-ms-asf",
+          "application/x-mPEGURL",
+          "application/x-m3u8",
+          "application/m3u8",
+          "application/x-hls",
+          "application/vnd.ms-sstr+xml",
+          "application/dash-xml"
+        ]
+      }
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "stream-downloader",
+  "version": "1.0.0",
+  "description": "Browser extension for downloading M3U8 (HLS) and MPD (DASH) video streams",
+  "main": "src/service-worker/index.ts",
+  "scripts": {
+    "build": "webpack --config webpack/prod.config.js",
+    "dev": "webpack serve --config webpack/dev.config.js",
+    "lint": "eslint src --ext .ts",
+    "test": "echo \"No tests specified\""
+  },
+  "keywords": ["browser-extension", "hls", "dash", "m3u8", "mpd", "video-download"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "webextension-polyfill": "^0.10.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.268",
+    "copy-webpack-plugin": "^12.0.2",
+    "html-webpack-plugin": "^5.6.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.2",
+    "webpack-merge": "^5.10.0"
+  }
+}
